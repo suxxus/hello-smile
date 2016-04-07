@@ -1,0 +1,41 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-family: sans-serif;
+    cursor: default;
+    text-align: center;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+.container {
+    height: 420px;
+    padding-top: 15px;
+    margin: 0 auto;
+    width: 300px;
+    border: 1px solid #333;
+    background: #fff;
+}
+
+.avatar {
+    margin: 0 auto;
+}
+
+.reload {
+    margin-left: 85%;
+    margin-top: 22%
+}
+
+.splash {
+    p {
+        font-size: 40px;
+        font-size: 4 rem;
+    }
+}

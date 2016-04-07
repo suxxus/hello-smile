@@ -1,0 +1,14 @@
+.inputName{
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    background-color: none;
+    transition: border 0.3s;
+}
+
+.message {
+    font-size: 150px;
+    font-weight: bold;
+    color: #696662;
+    margin-top: 60px;
+}

@@ -1,0 +1,5 @@
+# Generated directories
+node_modules
+build
+dist
+.tmp

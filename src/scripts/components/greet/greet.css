@@ -1,0 +1,14 @@
+.greet {
+  color: #45660D;
+}
+
+.clickme {
+  background-color: #708006;
+  border: 1px solid #241d13;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 9px 23px;
+  text-decoration: none;
+}

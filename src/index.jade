@@ -1,0 +1,18 @@
+doctype html
+html
+ head
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+  meta(name="viewport" content="width=device-width, initial-scale=1")
+
+  each item, i  in styledependencies
+    link(rel="stylesheet" href=item)
+
+  each item, j  in dependencies
+    script(src=item)
+
+  title= title
+
+ body
+  #root
+ script(src="bundle.js")
