@@ -18,7 +18,9 @@ npm install
 ```
 ## Scripts:
 The `package.json` file comes with the following scripts
+
 `npm run <name of script>`
+
 * `start` launch a dev server providing the app at build  (http://localhost:3000) serve alt ./build and start watching for changes at ./src/* files 
 * `dist` generates a distribution version, placed at ./dist
 * `dev` runs a dev console that reports lint and unit tests and start watching for changes at ./src/**/ *.js files. 
