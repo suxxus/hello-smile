@@ -22,11 +22,11 @@ test('types', t => {
 
     actual = TYPES.SHOW_GREET;
     expect = 'greet';
-    t.equal(actual, expect, 'type SHOW_HELLO is defined');
+    t.equal(actual, expect, 'type SHOW_GREET is defined');
 
     actual = TYPES.SHOW_SMILE;
     expect = 'smile';
-    t.equal(actual, expect, 'type SHOW_WORKING is defined');
+    t.equal(actual, expect, 'type SHOW_SMILE is defined');
 
 
     actual = TYPES.CHANGE_VIEW;
