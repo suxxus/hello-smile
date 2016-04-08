@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/suxxus/seed-project.git"
+    "url": "https://github.com/suxxus/hello-smile.git"
   },
   "author": "DIEGO",
   "license": "ISC",
@@ -95,6 +95,7 @@
   "keywords": [
     "babel",
     "eslint",
+    "storybook",
     "browserify",
     "react",
     "redux",
