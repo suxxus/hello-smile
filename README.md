@@ -1,6 +1,8 @@
 # Hello Smile
 
-***Mini app. Example using stateless components with React*** 
+[![Build Status](https://travis-ci.org/suxxus/hello-smile.svg?branch=master)](https://travis-ci.org/suxxus/hello-smile)
+
+***Mini app. Example using stateless components with React***
 
 * Standard ES6 modules using Babel + browserify
 * React > 0.14
@@ -14,15 +16,15 @@
 ```
 Clone the project: https://github.com/suxxus/hello-smile.git
 cd  ./hello-smile
-npm install 
+npm install
 ```
 ## Scripts:
 The `package.json` file comes with the following scripts
 
 `npm run <name of script>`
 
-* `start` launch a dev server providing the app at build  (http://localhost:3000) serve alt ./build and start watching for changes at ./src/* files 
-* `dev` runs a dev console that reports lint and unit tests and start watching for changes at ./src/**/ *.js files. 
+* `start` launch a dev server providing the app at build  (http://localhost:3000) serve alt ./build and start watching for changes at ./src/* files
+* `dev` runs a dev console that reports lint and unit tests and start watching for changes at ./src/**/ *.js files.
 * `test` run provided unit test
 * `storybook` launch a server at port 9005
 * `dist` generates a distribution version, placed at ./dist
@@ -49,7 +51,7 @@ used for implementation
 
 
 ## Demo:
-[smile app](http://suxxus.github.io) 
+[smile app](http://suxxus.github.io)
 
 ## Useful links:
 * [React Pure Component Starter](https://github.com/ericelliott/react-pure-component-starter)
