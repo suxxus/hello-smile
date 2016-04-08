@@ -5,8 +5,8 @@ node_js:
   - "4.0"
 
 script:
+  - npm run lint
   - npm test
-  - npm run gstlint
   - npm run check
 
 # whitelist
