@@ -5,20 +5,13 @@
     "type": "git",
     "url": "https://github.com/suxxus/seed-project.git"
   },
+
   "author": "DIEGO",
   "license": "ISC",
   "description": "dummy app to test React pure components",
+
   "main": "index.js",
-  "watch": {
-    "test": "{src, test}/**/*.js",
-    "lint": "{src, test}/**/*.js",
-    "build": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "scss, js"
-    }
-  },
+
   "literalify": {
     "react": "window.React",
     "react-dom": "window.ReactDOM",
@@ -40,22 +33,22 @@
     "lint": "eslint --color  src || true",
     "test": "NODE_PATH=src babel-node src/tests/index.js | tap-colorize",
     "clean": "rm -rf ./build/* && rm -rf .tmp/*  && rm -rf dist/*",
+    "concat:css": "cat .tmp/*.css > build/main.css",
     "prebuild": "npm run clean -s",
     "build:js": "NODE_PATH=src browserify -d -t babelify -t literalify -p [css-modulesify --after postcss-color-rebeccapurple --after autoprefixer --autoprefixer.browsers '> 5%' -o .tmp/components.css --json build/css-modules.json] src/scripts/index.js > build/bundle.js",
     "build:markup": "jade src/index.jade --obj prj.json --pretty --out build",
     "build:css": "node-sass --output-style compact --include-path scss  --source-map-embed src/styles/main.scss .tmp/main.css",
-    "concat:css": "cat .tmp/*.css > build/main.css",
-    "build": "npm run build:js -s && npm run build:css -s && npm run concat:css && npm run build:markup -s",
-    "watch": "npm-watch",
+    "build":"npm test & npm run lint && npm run build:js -s && npm run build:css -s && npm run concat:css && npm run build:markup -s",
+    "watch:start":"watch -p 'src/**/*' -c 'npm run build'",
     "browsersync": "browser-sync start --reload-delay 2000 --files './build/*.js' --server ./build",
-    "start": "npm run build && npm run browsersync & npm run watch",
-    "dev": "npm run watch",
     "storybook": "start-storybook -p 9005",
     "check": "npm outdated --depth=0",
     "update": "updtr",
     "uglify": "uglifyjs build/*.js -o dist/bundle.js",
     "minify:html": "html-minifier --collapse-whitespace build/index.html -o  dist/index.html",
-    "dist": "npm run lint && npm run test && npm run build && cat build/*.css | cleancss -o dist/main.css && npm run minify:html && npm run uglify"
+    "dist": "npm run lint & npm run test && npm run build && cat build/*.css | cleancss -o dist/main.css && npm run minify:html && npm run uglify",
+    "dev": "watch -p 'src/**/*.js' -c 'npm test & npm run lint'",
+    "start": "npm run build && npm run browsersync & npm run watch:start"
   },
   "devDependencies": {
     "@kadira/storybook": "1.6.0",
@@ -81,7 +74,6 @@
     "literalify": "0.4.0",
     "mock": "0.1.1",
     "node-sass": "3.4.2",
-    "npm-watch": "0.1.3",
     "path": "0.12.7",
     "postcss-color-rebeccapurple": "2.0.0",
     "postcss-loader": "0.8.2",
@@ -93,6 +85,7 @@
     "tape": "4.5.1",
     "uglify-js": "2.6.2",
     "updtr": "0.1.10",
+    "watch-cli": "0.2.1",
     "webpack": "1.12.14"
   },
   "dependencies": {
