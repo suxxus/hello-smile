@@ -6,7 +6,7 @@ node_js:
 
 script:
   - npm test
-  - npm run lint
+  - npm run gstlint
   - npm run check
 
 # whitelist
