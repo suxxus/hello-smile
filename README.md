@@ -1,7 +1,6 @@
 # Hello Smile
 
 ***Mini app. Example using stateless components with React*** 
-(reusable components)
 
 * Standard ES6 modules using Babel + browserify
 * React > 0.14
