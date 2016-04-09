@@ -1,105 +1,120 @@
 {
-  "name": "react-redux-smile",
-  "version": "1.0.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/suxxus/hello-smile.git"
-  },
-  "author": "DIEGO",
-  "license": "ISC",
-  "description": "dummy app to test React pure components",
-  "main": "index.js",
-  "literalify": {
-    "react": "window.React",
-    "react-dom": "window.ReactDOM",
-    "redux": "window.Redux",
-    "react-redux": "window.ReactRedux",
-    "ramda": "window.R"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "brfs",
-        {
-          "ignore": "\\.(json|css)$"
-        }
-      ]
+    "name": "react-redux-smile",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/suxxus/hello-smile.git"
+    },
+    "author": "DIEGO",
+    "license": "ISC",
+    "description": "dummy app to test React pure components",
+    "main": "index.js",
+    "literalify": {
+        "react": "window.React",
+        "react-dom": "window.ReactDOM",
+        "redux": "window.Redux",
+        "react-redux": "window.ReactRedux",
+        "ramda": "window.R"
+    },
+
+    "prj": {
+
+        "title": "react redux - pure components - Smile ",
+        "dependencies": [
+            "https://cdnjs.cloudflare.com/ajax/libs/react/0.14.8/react.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.1/react-redux.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/redux/3.3.1/redux.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/ramda/0.20.1/ramda.min.js"
+        ],
+        "styledependencies": [
+            "main.css"
+        ]
+    },
+
+    "browserify": {
+        "transform": [
+            [
+                "brfs", {
+                    "ignore": "\\.(json|css)$"
+                }
+            ]
+        ]
+    },
+    "scripts": {
+        "lint": "eslint --color  src || true",
+        "test": "NODE_PATH=src babel-node src/tests/index.js | tap-colorize",
+        "clean": "rm -rf ./build/* && rm -rf .tmp/*  && rm -rf dist/*",
+        "concat:css": "cat .tmp/*.css > build/main.css",
+        "prebuild": "npm run clean -s",
+        "build:js": "NODE_PATH=src browserify -d -t babelify -t literalify -p [css-modulesify --after postcss-color-rebeccapurple --after autoprefixer --autoprefixer.browsers '> 5%' -o .tmp/components.css --json build/css-modules.json] src/scripts/index.js > build/bundle.js",
+        "build:markup": "jade src/index.jade --obj package.json --pretty --out build",
+        "build:css": "node-sass --output-style compact --include-path scss  --source-map-embed src/styles/main.scss .tmp/main.css",
+        "build": "npm test & npm run lint && npm run build:js -s && npm run build:css -s && npm run concat:css && npm run build:markup -s",
+        "watch:start": "watch -p 'src/**/*' -c 'npm run build'",
+        "browsersync": "browser-sync start --reload-delay 2000 --files './build/*.js' --server ./build",
+        "storybook": "start-storybook -p 9005",
+        "check": "npm outdated --depth=0",
+        "update": "updtr",
+        "uglify": "uglifyjs build/*.js -o dist/bundle.js",
+        "minify:html": "html-minifier --collapse-whitespace build/index.html -o  dist/index.html",
+        "dist": "npm run lint & npm run test && npm run build && cat build/*.css | cleancss -o dist/main.css && npm run minify:html && npm run uglify",
+        "dev": "watch -p 'src/**/*.js' -c 'npm test & npm run lint'",
+        "start": "npm run build && npm run browsersync & npm run watch:start"
+    },
+    "devDependencies": {
+        "@kadira/storybook": "1.6.0",
+        "autoprefixer-core": "6.0.1",
+        "babel-cli": "6.7.5",
+        "babel-eslint": "6.0.2",
+        "babel-preset-es2015": "6.6.0",
+        "babel-preset-react": "6.5.0",
+        "babelify": "7.2.0",
+        "brfs": "git://github.com/joshwnj/brfs.git#ignore-option",
+        "browser-sync": "2.11.2",
+        "browserify": "13.0.0",
+        "clean-css": "3.4.11",
+        "css-loader": "0.23.1",
+        "css-modulesify": "0.22.0",
+        "deep-freeze": "0.0.1",
+        "enzyme": "2.2.0",
+        "eslint": "2.7.0",
+        "eslint-plugin-react": "4.3.0",
+        "estraverse-fb": "1.3.1",
+        "html-minifier": "1.4.0",
+        "jade": "1.11.0",
+        "literalify": "0.4.0",
+        "mock": "0.1.1",
+        "node-sass": "3.4.2",
+        "path": "0.12.7",
+        "postcss-color-rebeccapurple": "2.0.0",
+        "postcss-loader": "0.8.2",
+        "react-addons-test-utils": "15.0.0",
+        "sass-loader": "3.2.0",
+        "sinon": "1.17.3",
+        "style-loader": "0.13.1",
+        "tap-colorize": "1.2.0",
+        "tape": "4.5.1",
+        "uglify-js": "2.6.2",
+        "updtr": "0.1.10",
+        "watch-cli": "0.2.1",
+        "webpack": "1.12.14"
+    },
+    "dependencies": {
+        "ramda": "0.20.1",
+        "react": "0.14.8",
+        "react-dom": "0.14.8",
+        "react-redux": "4.4.1",
+        "redux": "3.3.1"
+    },
+    "keywords": [
+        "babel",
+        "eslint",
+        "storybook",
+        "browserify",
+        "react",
+        "redux",
+        "front-end",
+        "project"
     ]
-  },
-  "scripts": {
-    "lint": "eslint --color  src || true",
-    "test": "NODE_PATH=src babel-node src/tests/index.js | tap-colorize",
-    "clean": "rm -rf ./build/* && rm -rf .tmp/*  && rm -rf dist/*",
-    "concat:css": "cat .tmp/*.css > build/main.css",
-    "prebuild": "npm run clean -s",
-    "build:js": "NODE_PATH=src browserify -d -t babelify -t literalify -p [css-modulesify --after postcss-color-rebeccapurple --after autoprefixer --autoprefixer.browsers '> 5%' -o .tmp/components.css --json build/css-modules.json] src/scripts/index.js > build/bundle.js",
-    "build:markup": "jade src/index.jade --obj prj.json --pretty --out build",
-    "build:css": "node-sass --output-style compact --include-path scss  --source-map-embed src/styles/main.scss .tmp/main.css",
-    "build": "npm test & npm run lint && npm run build:js -s && npm run build:css -s && npm run concat:css && npm run build:markup -s",
-    "watch:start": "watch -p 'src/**/*' -c 'npm run build'",
-    "browsersync": "browser-sync start --reload-delay 2000 --files './build/*.js' --server ./build",
-    "storybook": "start-storybook -p 9005",
-    "check": "npm outdated --depth=0",
-    "update": "updtr",
-    "uglify": "uglifyjs build/*.js -o dist/bundle.js",
-    "minify:html": "html-minifier --collapse-whitespace build/index.html -o  dist/index.html",
-    "dist": "npm run lint & npm run test && npm run build && cat build/*.css | cleancss -o dist/main.css && npm run minify:html && npm run uglify",
-    "dev": "watch -p 'src/**/*.js' -c 'npm test & npm run lint'",
-    "start": "npm run build && npm run browsersync & npm run watch:start"
-  },
-  "devDependencies": {
-    "@kadira/storybook": "1.6.0",
-    "autoprefixer-core": "6.0.1",
-    "babel-cli": "6.7.5",
-    "babel-eslint": "6.0.2",
-    "babel-preset-es2015": "6.6.0",
-    "babel-preset-react": "6.5.0",
-    "babelify": "7.2.0",
-    "brfs": "git://github.com/joshwnj/brfs.git#ignore-option",
-    "browser-sync": "2.11.2",
-    "browserify": "13.0.0",
-    "clean-css": "3.4.11",
-    "css-loader": "0.23.1",
-    "css-modulesify": "0.22.0",
-    "deep-freeze": "0.0.1",
-    "enzyme": "2.2.0",
-    "eslint": "2.7.0",
-    "eslint-plugin-react": "4.3.0",
-    "estraverse-fb": "1.3.1",
-    "html-minifier": "1.4.0",
-    "jade": "1.11.0",
-    "literalify": "0.4.0",
-    "mock": "0.1.1",
-    "node-sass": "3.4.2",
-    "path": "0.12.7",
-    "postcss-color-rebeccapurple": "2.0.0",
-    "postcss-loader": "0.8.2",
-    "react-addons-test-utils": "15.0.0",
-    "sass-loader": "3.2.0",
-    "sinon": "1.17.3",
-    "style-loader": "0.13.1",
-    "tap-colorize": "1.2.0",
-    "tape": "4.5.1",
-    "uglify-js": "2.6.2",
-    "updtr": "0.1.10",
-    "watch-cli": "0.2.1",
-    "webpack": "1.12.14"
-  },
-  "dependencies": {
-    "ramda": "0.20.1",
-    "react": "0.14.8",
-    "react-dom": "0.14.8",
-    "react-redux": "4.4.1",
-    "redux": "3.3.1"
-  },
-  "keywords": [
-    "babel",
-    "eslint",
-    "storybook",
-    "browserify",
-    "react",
-    "redux",
-    "front-end",
-    "project"
-  ]
 }
