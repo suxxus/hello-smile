@@ -51,7 +51,7 @@ used for implementation
 
 
 ## Demo:
-[smile app](http://suxxus.github.io)
+[smile app](http://suxxus.github.io/prjs/smile/smile.html)
 
 ## Useful links:
 * [React Pure Component Starter](https://github.com/ericelliott/react-pure-component-starter)
