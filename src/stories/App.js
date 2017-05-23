@@ -5,7 +5,7 @@ import Splash from '../scripts/components/splash';
 import Greet from '../scripts/components/greet';
 import Smile from '../scripts/components/smile';
 
-const splash = Splash(React);
+const splash = Splash;
 const greet = Greet(React);
 const smile = Smile(React);
 
@@ -15,7 +15,8 @@ storiesOf('App', module)
     .add('Splash comp', () => {
 
         const props = {
-            callback: action('enter: keyword event was pressed once')
+            callback: action('enter: keyword event was pressed once'),
+            display: 'block'
         };
 
         return (

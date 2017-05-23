@@ -1,25 +1,22 @@
 import { connect } from 'react-redux';
 import { userName, changeView } from 'scripts/actions';
 import Splash from 'scripts/components/splash';
-import { SHOW_GREET } from 'scripts/constants';
+import { SHOW_GREET, SHOW_SPLASH } from 'scripts/constants';
 
-const mapStateToProps = (state) => ({
-    display: state.views.splash ? 'block' : 'none'
+const mapStateToProps = state => ({
+    display: state.view === SHOW_SPLASH ? 'block' : 'none'
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => ({
+    callback: username => {
+        dispatch(userName(username));
+        dispatch(changeView(SHOW_GREET));
+    }
+});
 
-    return {
-        callback: name => {
-            dispatch(userName(name));
-            dispatch(changeView(SHOW_GREET));
-        }
-    };
-};
-
-const splash = React => connect(
+const splash = () => connect(
     mapStateToProps,
     mapDispatchToProps
-)(Splash(React));
+)(Splash);
 
 export default splash;

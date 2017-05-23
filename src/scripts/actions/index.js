@@ -1,12 +1,16 @@
 import * as TYPES from 'scripts/constants';
 
-export const userName = name => ({
+const userName = name => ({
     type: TYPES.USER_NAME,
-    name
+    payload: name
 });
 
-export const changeView = show => ({
+const changeView = show => ({
     type: TYPES.CHANGE_VIEW,
-    show
+    payload: show
 });
 
+export {
+    userName,
+    changeView
+};

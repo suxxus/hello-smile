@@ -40,7 +40,7 @@
     ]
   },
   "scripts": {
-    "lint": "eslint --color  src || true",
+    "lint": "eslint --color --fix  src || true",
     "test": "NODE_PATH=src babel-node src/tests/index.js | tap-colorize",
     "clean": "rm -rf ./build/* && rm -rf .tmp/*  && rm -rf dist/*",
     "concat:css": "cat .tmp/*.css > build/main.css",
@@ -52,7 +52,6 @@
     "watch:start": "watch -p 'src/**/*' -c 'npm run build'",
     "browsersync": "browser-sync start --reload-delay 2000 --files './build/*.js' --server ./build",
     "storybook": "start-storybook -p 9005",
-    "check": "npm outdated --depth=0",
     "update": "updtr",
     "uglify": "uglifyjs build/*.js -o dist/bundle.js",
     "minify:html": "html-minifier --collapse-whitespace build/index.html -o  dist/index.html",
@@ -99,7 +98,6 @@
     "webpack": "1.12.14"
   },
   "dependencies": {
-    "ramda": "0.22.1",
     "react": "0.14.8",
     "react-dom": "0.14.8",
     "react-redux": "4.4.1",

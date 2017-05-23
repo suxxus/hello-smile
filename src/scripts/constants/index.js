@@ -1,4 +1,3 @@
-
 // -- actions
 export const USER_NAME = 'user.name';
 export const CHANGE_VIEW = 'change.view';

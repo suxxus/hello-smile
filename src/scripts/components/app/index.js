@@ -4,7 +4,7 @@
 
 export default React => {
 
-   const Splash = createSplash(React),
+   const Splash = createSplash(),
          Greet = createGreet(React),
          Smile = createSmile(React),
 

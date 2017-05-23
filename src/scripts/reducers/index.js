@@ -1,25 +1,24 @@
-import { assoc, mapObjIndexed, pipe, always, is, or, F, ifElse } from 'ramda';
+import * as TYPES from 'scripts/constants';
+import { combineReducers } from 'redux';
 
-
-export const setViews = (views, view) => {
-
-    const allToFalse = F,
-        viewIsDefined = is(String),
-        setViewsProp = () => pipe(mapObjIndexed(allToFalse), assoc(view, true))(views),
-        defaultState = always(views),
-
-        result = ifElse(
-            viewIsDefined,
-            setViewsProp,
-            defaultState
-        )(view);
-
-    return result;
+const view = function setViewReducer( state = '', action ) {
+    if (action.type === TYPES.CHANGE_VIEW) {
+        return action.payload;
+    }
+    return state;
 };
 
-export const setName = (actualName, nextName) => or(nextName, actualName);
+const userName = function userNameReducer( state = '', action ) {
+    if (action.type === TYPES.USER_NAME) {
+        return action.payload;
+    }
+    return state;
+};
 
-export const greetApp = (state, action) => ({
-    name: setName(state.name, action.name),
-    views: setViews(state.views, action.show)
-});
+const rootReducer = combineReducers({ view, userName });
+
+export {
+    view,
+    userName,
+    rootReducer
+};

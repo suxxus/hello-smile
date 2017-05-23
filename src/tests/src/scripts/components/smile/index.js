@@ -27,26 +27,6 @@ test('smile comp', t => {
     t.end();
 });
 
-test('show / hide view', t => {
-
-    const props = {
-        display: 'none'
-    };
-
-    let actual, expect;
-
-    actual = shallow($(smile)).find('.smile').prop('style').display;
-    expect = 'block';
-    t.equal(actual, expect, 'display should be block');
-
-    actual = shallow($(smile, props)).find('.smile').prop('style').display;
-    expect = 'none';
-    t.equal(actual, expect, 'display should be none');
-
-
-    t.end();
-});
-
 test('name', t => {
 
     const props = {

@@ -3,21 +3,20 @@
  import { Provider } from 'react-redux';
  import createStore from 'scripts/stores';
  import createApp from 'scripts/components/app';
-
+ import { SHOW_SPLASH } from 'scripts/constants';
+ import { changeView } from 'scripts/actions';
 
  const App = createApp(React);
 
+ const store = createStore();
+
+
  render( <Provider store = {
-         createStore({
-             name: '',
-             views: {
-                 splash: true,
-                 greet: false,
-                 smile: false
-             }
-         })
+         store
      }>
-      <App/>
+     <App/>
      </Provider>,
      document.querySelector('#root')
  );
+
+ store.dispatch(changeView(SHOW_SPLASH));

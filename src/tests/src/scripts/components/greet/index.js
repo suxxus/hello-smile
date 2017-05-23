@@ -27,26 +27,6 @@ test('greet comp', t => {
     t.end();
 });
 
-test('show / hide view', t => {
-
-    let props = {
-        display: 'none'
-    };
-
-    let actual, expect;
-
-    actual = shallow($(greet)).find('.hello').prop('style').display;
-    expect = 'block';
-    t.equal(actual, expect, 'display should be block');
-
-    actual = shallow($(greet, props)).find('.hello').prop('style').display;
-    expect = 'none';
-    t.equal(actual, expect, 'display should be none');
-
-
-    t.end();
-});
-
 test('user name', t => {
 
     const props = {

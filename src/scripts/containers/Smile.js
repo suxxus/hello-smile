@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
-import { changeView } from 'scripts/actions';
+import { changeView, userName } from 'scripts/actions';
 import Smile from 'scripts/components/smile';
-import { SHOW_SPLASH } from 'scripts/constants';
+import { SHOW_SPLASH, SHOW_SMILE } from 'scripts/constants';
 
 const mapStateToProps = (state) => ({
-    name: state.name,
-    display: state.views.smile ? 'block' : 'none'
+    name: state.userName,
+    display: state.view === SHOW_SMILE ? 'block' : 'none'
 });
 
 const mapDispatchToProps = dispatch => {
     return {
         callback: () => {
+            dispatch(userName(''));
             dispatch(changeView(SHOW_SPLASH));
         }
     };

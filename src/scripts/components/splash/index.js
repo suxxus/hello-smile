@@ -1,32 +1,47 @@
 import styles from './splash.css';
-export default React => {
+import React, { Component } from 'react';
 
-    const {
-        string,
-        func
-    } = React.PropTypes;
+class Splash extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+        };
+    }
 
-    const splash = ({ callback, display = 'block' }) => {
+    handleEnterKey(evt) {
+        const isEnterKey = evt.which === 13;
+        const { callback } = this.props;
 
-      const callbackWrapper = e => {
-          const enterPressed = e.which === 13,
-                action = enterPressed ? callback : () => false;
+        if (isEnterKey) {
+            evt.preventDefault();
+            callback(this.state.username);
+            this.setState({ username: '' });
+        }
+    }
 
-              action(e.target.value);
-      };
+    handleChange({ target }) {
+        this.setState({ username: target.value });
+    }
 
-      return (
-        <div className="splash" style={{display: display}}>
-          <input className={styles.inputName} placeholder="your name" onKeyDown={callbackWrapper} />
-          <p className={styles.message}>fill the field with your name and press enter.</p>
-        </div>
-      );
-    };
+    render() {
 
-    splash.propTypes = {
-        display: string,
-        callback: func.isRequired
-    };
+        const {
+            display
+        } = this.props;
 
-    return splash;
+        return (
+            <form className="splash" id="user-name" style={{display}}>
+              <input placeholder="your name" className={styles.inputName} onKeyDown={this.handleEnterKey.bind(this)} onChange={this.handleChange.bind(this)} value={this.state.username} />
+              <h3 className={styles.message}>fill the field with your name and press enter.</h3>
+          </form>
+        );
+    }
+}
+
+Splash.propTypes = {
+    display: React.PropTypes.string,
+    callback: React.PropTypes.func.isRequired
 };
+
+export default Splash;

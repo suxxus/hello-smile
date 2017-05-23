@@ -20,14 +20,14 @@ test('actions', t => {
     actual = actions.userName('Peter');
     expect = {
         type: TYPES.USER_NAME,
-        name: 'Peter'
+        payload: 'Peter'
     };
     t.deepEqual(actual, expect, 'action: name');
 
     actual = actions.changeView(TYPES.SHOW_SPLASH);
     expect = {
         type: TYPES.CHANGE_VIEW,
-        show: TYPES.SHOW_SPLASH
+        payload: TYPES.SHOW_SPLASH
     };
     t.deepEqual(actual, expect, 'action: showSplash');
 
