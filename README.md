@@ -28,7 +28,6 @@ The `package.json` file comes with the following scripts
 * `test` run provided unit test
 * `storybook` launch a server at port 9005
 * `dist` generates a distribution version, placed at ./dist
-* `check` check outdated npm modules
 * `update` update  outdated npm modules
 
 ## ToolBox:
@@ -43,7 +42,6 @@ used for implementation
 * Sinon (test spies)
 * Enzyme (Test assertion helpers for use with React's shallowRender test utils)
 * Babel (ES6 transpiler)
-* Ramdajs (practical functional library)
 * Jade (html templating)
 * Sass
 * Browsersync (synchronised browser testing)
