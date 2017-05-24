@@ -1,6 +1,6 @@
 {
   "name": "react-redux-smile",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/suxxus/hello-smile.git"
@@ -43,6 +43,7 @@
     "lint": "eslint --color --fix  src || true",
     "test": "NODE_PATH=src babel-node src/tests/index.js | tap-colorize",
     "clean": "rm -rf ./build/* && rm -rf .tmp/*  && rm -rf dist/*",
+    "check": "npm outdated --depth=0",
     "concat:css": "cat .tmp/*.css > build/main.css",
     "prebuild": "npm run clean -s",
     "build:js": "NODE_PATH=src browserify -d -t babelify -t literalify -p [css-modulesify --after postcss-color-rebeccapurple --after autoprefixer --autoprefixer.browsers '> 5%' -o .tmp/components.css --json build/css-modules.json] src/scripts/index.js > build/bundle.js",
@@ -112,5 +113,9 @@
     "redux",
     "front-end",
     "project"
-  ]
+  ],
+  "engines": {
+        "node": ">=6.0.0",
+        "npm": ">=3.8.0"
+    }
 }
