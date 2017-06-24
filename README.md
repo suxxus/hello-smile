@@ -56,8 +56,7 @@ methods
 ---
 
 ### onPartClick
-
-callback
+###### callback
 
 Receives the code of the selected part.
 ```
@@ -65,14 +64,14 @@ GTEapi.onPartClick(function(partCode){console.log(part)})
 ```
 
 ### onAppError
-callback
+###### callback
 
 Receives the errors thrown by the app.
 ```
 GTEapi.onAppError(function(msg){console.log(msg)})
 ```
 ### userConfig
-:: object -> promise
+###### :: object -> promise
 
 If this method is not called, the component assigns default values.
 
@@ -131,8 +130,7 @@ Assigns the color for the `notAdded` state.
 
 
 ### renderApp
-
-::  -> promise
+###### ::  -> promise
 
 Renders the app
 ```
@@ -140,7 +138,8 @@ GTEapi.renderApp()
 
 ```
 ### selectGraphicZone
-:: object -> promise
+###### :: object -> promise
+
 Gets the data for the specified graphic area.
 
      GTEapi.selectGraphicZone({
@@ -155,7 +154,7 @@ Gets the data for the specified graphic area.
       })
 
 ### addPart
-:: object -> promise
+###### :: object -> promise
 
 Sets the situation to `Added` for each of the parts in the list.
 
@@ -164,7 +163,8 @@ GTEapi.addPart({ partCodeList: ['7101L', ...] })
 ```
 
 ### deletePart
-:: object -> promise
+###### :: object -> promise
+
 Sets the situation to `NotAdded` for each of the parts specified in the list.
 
 ```
@@ -172,13 +172,14 @@ GTEapi.deletePart({ partCodeList: ['7101L', ...] })
 ```
 
 ### getLaterality
-:: -> promise
+###### :: -> promise
+
 Returns the state of the current laterality.
 ```
 GTEapi.getLaterality()
 ```
 ### setLaterality
-:: string -> promise
+###### :: string -> promise
 
 Sets the state of laterality.
 
@@ -192,7 +193,7 @@ You can assign a parameter to set the laterality:
 'Left' || 'Right' || 'None'
 ```
 ### viewPending
-:: boolean -> promise
+###### :: boolean -> promise
 
 True Boolean indicating whether parts with `Pending` status are displayed.
 ```
@@ -200,7 +201,7 @@ GTEapi.viewPending(true)
 ```
 
 ### resetZoom
-:: -> promise
+###### :: -> promise
 
 Resets the composition zoom to `1:1`.
 ```
@@ -215,7 +216,7 @@ GTEapi.clearGraphicZone()
 ```
 
 ### getSituation
-:: string -> promise
+###### :: string -> promise
 
 Returns the value of the situation of the specified part.
 
@@ -224,7 +225,7 @@ GTEapi.getSituation('7101L')
 ```
 
 ### unselectPart
-:: -> promise
+###### :: -> promise
 
 Deselect the parts of the composition if there are any selected.
 ```
@@ -232,7 +233,7 @@ GTEapi.unselectPart()
 ```
 
 ### selectPart
-:: string, boolean -> promise
+###### :: string, boolean -> promise
 
 Select the assigned part.
 ```
