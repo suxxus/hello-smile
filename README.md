@@ -1,6 +1,7 @@
 **Gte Motive Vehicle Representation**
 =======
-**Module for graphic representation of parts in a dynamic composition**
+**Module for graphic representation of parts in a dynamic composition.**
+
 *This component allows the visualization of a graphical composition of the vehicle.*
 
 Supported on the following operating systems
